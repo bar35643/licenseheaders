@@ -385,6 +385,8 @@ def parse_command_line(argv):
                         help="Back up all files which get changed to a copy with .bak added to the name")
     parser.add_argument("-t", "--tmpl", dest="tmpl", default=None,
                         help="Template name or file to use.")
+    parser.add_argument("-a", "--author", dest="author", default=None,
+                        help="Authors name.")
     parser.add_argument("-s", "--settings", dest="settings", default=None,
                         help="Settings file to use.")
     parser.add_argument("-y", "--years", dest="years", default=None,
@@ -848,10 +850,18 @@ def main():
             settings["years"] = years
         if arguments.owner:
             settings["owner"] = arguments.owner
+        if arguments.author:
+            settings["author"] = "Author: " + arguments.author
+            settings["author_name"] = arguments.author
+            
         if arguments.projectname:
             settings["projectname"] = arguments.projectname
+            
         if arguments.projecturl:
-            settings["projecturl"] = arguments.projecturl
+            settings["projecturl"] = "(see "+ arguments.projecturl +")"
+        else:
+            settings["projecturl"] = ""
+            
         # if we have a template name specified, try to get or load the template
         if arguments.tmpl:
             opt_tmpl = arguments.tmpl
