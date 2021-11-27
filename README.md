@@ -9,6 +9,9 @@ the supported types (see below) in or below some directory.
 ## Usage
 
 ```
+python licenseheaders.py -t gpl-v3.tmpl -o "Owner" -cy 2021 -a "Author" -d ./Dirpath -n Name -u url
+
+
 usage: licenseheaders.py [-h] [-V] [-v] [-d DIR] [-f [FILES [FILES ...]]] [-b]
                          [-t TMPL] [-y YEARS] [-cy] [-o OWNER]
                          [-n PROJECTNAME] [-u PROJECTURL] [--enc ENCODING]
