@@ -32,6 +32,7 @@ import stat
 import contextlib
 from shutil import copyfile
 from string import Template
+import datetime
 
 import regex as re
 
@@ -498,7 +499,7 @@ def get_files(fnpatterns, files):
 
 def read_template(template_file, vardict, args):
     """
-    Read a template file replace variables from the dict and return the lines.
+    Read a template file replace varfsiables from the dict and return the lines.
     Throws exception if a variable cannot be replaced.
     :param template_file: template file with variables
     :param vardict: dictionary to replace variables with values
@@ -856,6 +857,10 @@ def main():
             
         if arguments.projectname:
             settings["projectname"] = arguments.projectname
+            
+        import datetime
+        x = datetime.datetime.now()
+        settings["date"] = x.strftime("%Y-%m-%d")
             
         if arguments.projecturl:
             settings["projecturl"] = "(see "+ arguments.projecturl +")"
